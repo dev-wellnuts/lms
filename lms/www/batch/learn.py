@@ -1,4 +1,5 @@
 import frappe
+from lms.lms.doctype.lms_batch.lms_batch import LMSBatch
 from lms.www.utils import get_common_context, redirect_to_lesson
 from lms.lms.utils import get_lesson_url, has_course_moderator_role, is_instructor, redirect_to_courses_list
 from frappe.utils import cstr, flt
@@ -74,8 +75,9 @@ def get_url(lesson_number, course):
 
 
 def get_lesson_index(course, batch, user):
-    print(batch)
-    lesson = batch.get_current_lesson(user)
+    batch_model = LMSBatch(batch)
+    print(course)
+    lesson = batch_model.get_current_lesson(user)
     return lesson and course.get_lesson_index(lesson)
 
 
