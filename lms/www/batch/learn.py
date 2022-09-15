@@ -75,9 +75,8 @@ def get_url(lesson_number, course):
 
 
 def get_lesson_index(course, batch, user):
-    batch_model = LMSBatch(batch)
-    print(course)
-    lesson = batch_model.get_current_lesson(user)
+    print(batch)
+    lesson = batch.get_current_lesson(user)
     return lesson and course.get_lesson_index(lesson)
 
 
