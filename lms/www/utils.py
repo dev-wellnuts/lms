@@ -13,7 +13,7 @@ def get_common_context(context):
     if not course:
         context.template = "www/404.html"
         return
-    context.course = course
+    context.course = frappe.get_doc("LMS Course", course)
     context.lessons = get_lessons(course.name)
     membership = get_membership(course.name, frappe.session.user, batch_name)
     context.membership = membership
