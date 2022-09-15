@@ -18,7 +18,7 @@ def get_context(context):
 
     if not chapter_index or not lesson_index:
         if context.batch:
-            index_ = get_lesson_index(context.course, context.batch, frappe.session.user) or "1.1"
+            index_ = get_lesson_index_with_batch(context.course, context.batch, frappe.session.user) or "1.1"
         else:
             index_ = "1.1"
         redirect_to_lesson(context.course, index_)
@@ -73,7 +73,7 @@ def get_url(lesson_number, course):
     return get_lesson_url(course.name, lesson_number) and get_lesson_url(course.name, lesson_number) + course.query_parameter
 
 
-def get_lesson_index(course, batch, user):
+def get_lesson_index_with_batch(course, batch, user):
     print(batch)
     lesson = batch.get_current_lesson(user)
     return lesson and get_lesson_index(lesson)
