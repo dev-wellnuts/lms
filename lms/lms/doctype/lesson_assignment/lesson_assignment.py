@@ -16,10 +16,12 @@ def upload_assignment(assignment, lesson, identifier):
         "user": frappe.session.user,
         "id": identifier
     }
+    print(args)
     if frappe.db.exists(args):
         del args["doctype"]
         frappe.db.set_value("Lesson Assignment", args, "assignment", assignment)
     else:
+        print(assignment)
         args.update({"assignment": assignment})
         lesson_work = frappe.get_doc(args)
         lesson_work.save(ignore_permissions=True)
