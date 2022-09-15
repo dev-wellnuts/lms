@@ -16,6 +16,7 @@ def get_context(context):
         }, "chapter")
 
     if not chapter_index or not lesson_index:
+        print(context.batch)
         if context.batch:
             index_ = get_lesson_index(context.course, context.batch, frappe.session.user) or "1.1"
         else:
@@ -73,6 +74,7 @@ def get_url(lesson_number, course):
 
 
 def get_lesson_index(course, batch, user):
+    print(batch)
     lesson = batch.get_current_lesson(user)
     return lesson and course.get_lesson_index(lesson)
 
