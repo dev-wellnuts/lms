@@ -132,8 +132,7 @@ def get_enrolled_courses():
     for membership in memberships:
         course = frappe.db.get_value("LMS Course", membership.course, ["name", "upcoming", "title", "image",
             "enable_certification", "paid_certificate", "price_certificate", "currency", "published"], as_dict=True)
-        print(course)
-        if not course.published:
+        if not course or not course.published:
             continue
         progress = cint(membership.progress)
         if progress < 100:
