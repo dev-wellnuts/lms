@@ -335,8 +335,7 @@ const upload_file = (file, target) => {
         xhr.onreadystatechange = () => {
             if (xhr.readyState == XMLHttpRequest.DONE) {
                 if (xhr.status === 200) {
-                    let response = JSON.parse(xhr.responseText)
-                    console.log(response.message);
+                    let response = JSON.parse(xhr.responseText);
                     create_lesson_work(response.message, target);
                 } else if (xhr.status === 403) {
                     let response = JSON.parse(xhr.responseText);
@@ -378,7 +377,6 @@ const create_lesson_work = (file, target) => {
             target.siblings(".preview-work").removeClass("hide");
             target.siblings(".preview-work").find("a").attr("href", file.file_url).text(file.file_name)
             target.addClass("hide");
-            console.log(file);
         }
     });
 };

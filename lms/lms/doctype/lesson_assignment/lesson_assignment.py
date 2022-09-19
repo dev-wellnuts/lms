@@ -26,7 +26,6 @@ def upload_assignment(assignment, lesson, identifier):
 
 @frappe.whitelist()
 def get_assignment(lesson):
-    print(lesson)
     assignments = frappe.get_all("Lesson Assignment",
         {
             "lesson": lesson,

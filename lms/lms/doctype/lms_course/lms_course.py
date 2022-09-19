@@ -150,6 +150,7 @@ class LMSCourse(Document):
 
     def _reindex_exercises_in_chapter(self, chapter, index):
         i = 1
+        print(get_lessons(self, chapter))
         for lesson in get_lessons(self, chapter):
             for exercise in lesson.get_exercises():
                 exercise.index_ = i
