@@ -356,7 +356,7 @@ const upload_file = (file, target) => {
         let form_data = new FormData();
         if (file.file_obj) {
             form_data.append('file', file.file_obj, `${frappe.session.user}-${file.name}`);
-            form_data.append('folder', `${$(".title").attr("data-lesson")} ${$(".title").attr("data-course")}`)
+            form_data.append('folder', `Home/${$(".title").attr("data-lesson")} ${$(".title").attr("data-course")}`)
         }
 
         xhr.send(form_data);
