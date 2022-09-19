@@ -150,8 +150,9 @@ class LMSCourse(Document):
 
     def _reindex_exercises_in_chapter(self, c, index):
         i = 1
-        print(self)
-        for lesson in self.get_lessons(c):
+        chapter = frappe.get_doc("LMS Course", self.name)
+        print(chapter)
+        for lesson in chapter.get_lessons(c):
             for exercise in lesson.get_exercises():
                 exercise.index_ = i
                 exercise.index_label = f"{index}.{i}"
