@@ -54,9 +54,7 @@ class CourseLesson(Document):
             ex.save()
 
     def check_and_create_folder(self):
-        doc = frappe.get_doc("Course Lesson", self.name)
-        course = frappe.db.get_value("Chapter", doc.chapter, "course")
-        print(doc)
+        course = frappe.db.get_value("Course Chapter", self.chapter, "course")
         print(course)
         args = {
                 "doctype": "File",

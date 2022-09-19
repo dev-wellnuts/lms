@@ -7,7 +7,7 @@ from frappe.model.document import Document
 import json
 from ...utils import generate_slug
 from frappe.utils import flt, cint
-from lms.lms.utils import get_chapters
+from lms.lms.utils import get_chapters, get_lessons
 
 
 class LMSCourse(Document):
@@ -150,9 +150,7 @@ class LMSCourse(Document):
 
     def _reindex_exercises_in_chapter(self, c, index):
         i = 1
-        chapter = frappe.get_doc("LMS Course", self.name)
-        print(chapter)
-        for lesson in chapter.get_lessons(c):
+        for lesson in get_lessons(c, self.chapter):
             for exercise in lesson.get_exercises():
                 exercise.index_ = i
                 exercise.index_label = f"{index}.{i}"
