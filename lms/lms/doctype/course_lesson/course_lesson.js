@@ -117,6 +117,14 @@ frappe.ui.form.on('Course Lesson', {
                 </tr>
                 <tr>
                     <td>
+                        .zip, .rar
+                    </td>
+                    <td>
+                        ${__("Archive")}
+                    </td>
+                </tr>
+                <tr>
+                    <td>
                         .png, .jpg, .jpeg
                     </td>
                     <td>

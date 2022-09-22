@@ -13,7 +13,7 @@ def get_common_context(context):
     if not course:
         context.template = "www/404.html"
         return
-    context.course = course
+    context.course = frappe.get_doc("LMS Course", course)
     context.lessons = get_lessons(course.name)
     membership = get_membership(course.name, frappe.session.user, batch_name)
     context.membership = membership
@@ -21,7 +21,7 @@ def get_common_context(context):
         batch = get_batch(course.name, membership.batch)
 
         if batch:
-            context.batch = batch
+            context.batch = frappe.get_doc("LMS Batch", batch[0])
 
     context.course.query_parameter = "?batch=" + membership.batch if membership and membership.batch else ""
     context.livecode_url = get_livecode_url()

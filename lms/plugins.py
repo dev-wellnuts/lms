@@ -149,11 +149,12 @@ def assignment_renderer(detail):
         "Document": ".doc,.docx,.xml,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document",
         "PDF": ".pdf",
         "Image": ".png, .jpg, .jpeg",
+        "Archive": ".zip, .rar",
         "Video": "video/*"
     }
     file_type = detail.split("-")[1]
     accept = supported_types[file_type] if file_type else ""
-    return frappe.render_template("templates/assignment.html", {"id": detail.split("-")[0], "accept": accept})
+    return frappe.render_template("templates/assignment.html", {"id": detail.split("-")[1], "accept": accept})
 
 def show_custom_signup():
     if (frappe.db.get_single_value("LMS Settings", "terms_of_use")

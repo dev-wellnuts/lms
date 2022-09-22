@@ -15,7 +15,7 @@ class LMSBatch(Document):
 
     def validate_if_mentor(self):
         if not is_mentor(self.course, frappe.session.user):
-           frappe.throw(_("You are not a mentor of the course {0}").format(course.title))
+           frappe.throw(_("You are not a mentor of the course {0}").format(self.course.title))
 
     def after_insert(self):
         create_membership(batch=self.name, course=self.course, member_type="Mentor")

@@ -25,7 +25,7 @@ def upload_assignment(assignment, lesson, identifier):
         lesson_work.save(ignore_permissions=True)
 
 @frappe.whitelist()
-def get_assignment(lesson):
+def get_assignments(lesson):
     assignments = frappe.get_all("Lesson Assignment",
         {
             "lesson": lesson,

@@ -335,7 +335,7 @@ const upload_file = (file, target) => {
         xhr.onreadystatechange = () => {
             if (xhr.readyState == XMLHttpRequest.DONE) {
                 if (xhr.status === 200) {
-                    let response = JSON.parse(xhr.responseText)
+                    let response = JSON.parse(xhr.responseText);
                     create_lesson_work(response.message, target);
                 } else if (xhr.status === 403) {
                     let response = JSON.parse(xhr.responseText);
@@ -356,7 +356,7 @@ const upload_file = (file, target) => {
         let form_data = new FormData();
         if (file.file_obj) {
             form_data.append('file', file.file_obj, `${frappe.session.user}-${file.name}`);
-            form_data.append('folder', `${$(".title").attr("data-lesson")} ${$(".title").attr("data-course")}`)
+            form_data.append('folder', `Home/${$(".title").attr("data-lesson")} ${$(".title").attr("data-course")}`)
         }
 
         xhr.send(form_data);
@@ -430,7 +430,7 @@ const fetch_assignments = () => {
     if ($(".attach-file").length <= 0)
         return;
     frappe.call({
-        method: "lms.lms.doctype.lesson_assignment.lesson_assignment.get_assignment",
+        method: "lms.lms.doctype.lesson_assignment.lesson_assignment.get_assignments",
         args: {
             "lesson": $(".title").attr("data-lesson")
         },
