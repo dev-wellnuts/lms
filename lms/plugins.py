@@ -149,7 +149,7 @@ def assignment_renderer(detail):
         "Document": ".doc,.docx,.xml,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document",
         "PDF": ".pdf",
         "Image": ".png, .jpg, .jpeg",
-        "Archive": ".zip .rar",
+        "Archive": ".zip, .rar",
         "Video": "video/*"
     }
     file_type = detail.split("-")[1]
