@@ -435,6 +435,7 @@ const fetch_assignments = () => {
             "lesson": $(".title").attr("data-lesson")
         },
         callback: (data) => {
+        console.log(data.message);
         if (data.message && data.message.length) {
             const assignments = data.message;
             for (let i in assignments) {
