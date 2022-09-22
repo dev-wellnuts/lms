@@ -32,13 +32,6 @@ def get_assignments(lesson):
             "user": frappe.session.user
         },
         ["lesson", "user", "id", "assignment"])
-    print(assignments)
-    all_assignments = frappe.get_all("Lesson Assignment",
-        {
-            "user": frappe.session.user
-        },
-        ["lesson", "user", "id", "assignment"])
-    print(all_assignments)
     if len(assignments):
         for assignment in assignments:
             assignment.file_name = frappe.db.get_value("File", {"file_url": assignment.assignment}, "file_name")
