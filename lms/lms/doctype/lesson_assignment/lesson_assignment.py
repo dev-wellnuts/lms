@@ -25,13 +25,14 @@ def upload_assignment(assignment, lesson, identifier):
         lesson_work.save(ignore_permissions=True)
 
 @frappe.whitelist()
-def get_assignment(lesson):
+def get_assignments(lesson):
     assignments = frappe.get_all("Lesson Assignment",
         {
             "lesson": lesson,
             "user": frappe.session.user
         },
         ["lesson", "user", "id", "assignment"])
+    print(assignments)
     if len(assignments):
         for assignment in assignments:
             assignment.file_name = frappe.db.get_value("File", {"file_url": assignment.assignment}, "file_name")

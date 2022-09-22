@@ -430,7 +430,7 @@ const fetch_assignments = () => {
     if ($(".attach-file").length <= 0)
         return;
     frappe.call({
-        method: "lms.lms.doctype.lesson_assignment.lesson_assignment.get_assignment",
+        method: "lms.lms.doctype.lesson_assignment.lesson_assignment.get_assignments",
         args: {
             "lesson": $(".title").attr("data-lesson")
         },
