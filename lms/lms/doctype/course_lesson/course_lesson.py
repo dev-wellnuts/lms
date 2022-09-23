@@ -82,6 +82,9 @@ class CourseLesson(Document):
 
 @frappe.whitelist()
 def save_progress(lesson, course, status):
+    print(lesson)
+    print(course)
+    print(status)
     membership = frappe.db.exists("LMS Batch Membership",
                     {
                         "member": frappe.session.user,
