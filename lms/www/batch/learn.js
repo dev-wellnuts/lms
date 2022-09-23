@@ -123,6 +123,7 @@ const mark_active_question = (e = undefined) => {
 
 
 const mark_progress = (e) => {
+    console.log(e.currentTarget);
     /* Prevent default only for Next button anchor tag and not for progress checkbox */
     if ($(e.currentTarget).prop("nodeName") != "INPUT")
         e.preventDefault();
