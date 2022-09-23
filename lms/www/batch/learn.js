@@ -123,7 +123,6 @@ const mark_active_question = (e = undefined) => {
 
 
 const mark_progress = (e) => {
-    console.log($(e.currentTarget).prop("nodeName"));
     /* Prevent default only for Next button anchor tag and not for progress checkbox */
     if ($(e.currentTarget).prop("nodeName") != "INPUT")
         e.preventDefault();
@@ -131,13 +130,11 @@ const mark_progress = (e) => {
         return;
 
     const target = $(e.currentTarget).attr("data-progress") ? $(e.currentTarget) : $("input.mark-progress");
-    const current_status = $(".lesson-progress").hasClass("hide") ? "Incomplete": "Complete";
-    console.log(current_status);
+    const current_status = $(".lesson-progress").hasClass("hide") ? "Incomplete": "Complete"; 
     let status = "Incomplete";
     if (target.prop("nodeName") == "INPUT" && target.prop("checked")) {
         status = "Complete";
     }
-    console.log(status);
     if ((status != current_status ) || (status == "Incomplete" && current_status == "Incomplete")) {
         frappe.call({
             method: "lms.lms.doctype.course_lesson.course_lesson.save_progress",
