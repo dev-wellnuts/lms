@@ -138,7 +138,7 @@ const mark_progress = (e) => {
         status = "Complete";
     }
     console.log(status);
-    if (status != current_status) {
+    if ((status != current_status ) || (status == "Incomplete" && current_status == "Incomplete")) {
         frappe.call({
             method: "lms.lms.doctype.course_lesson.course_lesson.save_progress",
             args: {
