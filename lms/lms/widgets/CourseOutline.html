@@ -79,9 +79,11 @@
                     <span>{{ lesson.title }}</span>
 
                     {% if membership %}
-                    <svg class="icon icon-sm lesson-progress-tick {{ get_progress(course.name, lesson.name) != 'Complete' and 'hide' }}">
-                        <use class="" href="#icon-green-check">
-                    </svg>
+                    <div class="lesson-progress">
+                        <svg class="icon icon-sm lesson-progress-tick {{ get_progress(course.name, lesson.name) != 'Complete' and 'hide' }}">
+                            <use class="" href="#icon-green-check">
+                        </svg>
+                    </div>
                     {% endif %}
 
                 </a>
